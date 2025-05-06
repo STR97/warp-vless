@@ -34,6 +34,7 @@ interface ConfigOptionsProps {
   onSiteModeChange: (mode: "all" | "specific") => void
   deviceType: "computer" | "phone"
   onDeviceTypeChange: (type: "computer" | "phone") => void
+  onApply?: () => void // Добавляем проп для обработки нажатия "Применить"
 }
 
 export function ConfigOptions({
@@ -43,6 +44,7 @@ export function ConfigOptions({
   onSiteModeChange,
   deviceType,
   onDeviceTypeChange,
+  onApply,
 }: ConfigOptionsProps) {
   return (
     <div className="space-y-4">
@@ -81,8 +83,11 @@ export function ConfigOptions({
             <SelectItem value="phone">Телефон</SelectItem>
           </SelectContent>
         </Select>
+
+        <Button onClick={onApply} className="w-full">
+          Применить
+        </Button>
       </div>
     </div>
   )
 }
-

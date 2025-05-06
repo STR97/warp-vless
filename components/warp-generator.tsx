@@ -73,6 +73,10 @@ export function WarpGenerator() {
     setIsGenerated(false)
   }
 
+  const handleApply = () => {
+    setIsConfigOpen(false) // Закрываем диалоговое окно при нажатии "Применить"
+  }
+
   return (
     <div className="w-full space-y-4">
       <div className="flex items-center gap-2">
@@ -105,13 +109,14 @@ export function WarpGenerator() {
                   selectedServices={selectedServices}
                   onServiceToggle={(service) =>
                     setSelectedServices((prev) =>
-                      prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service],
+                      prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service]
                     )
                   }
                   siteMode={siteMode}
                   onSiteModeChange={setSiteMode}
                   deviceType={deviceType}
                   onDeviceTypeChange={setDeviceType}
+                  onApply={handleApply} // Передаём обработчик для кнопки "Применить"
                 />
               </DialogContent>
             </Dialog>
@@ -150,4 +155,3 @@ export function WarpGenerator() {
     </div>
   )
 }
-
