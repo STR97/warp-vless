@@ -3,6 +3,29 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -19,10 +42,10 @@
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
     --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --accent-foreground: ;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
-    --warning: 35 100% 52%;
+    --warning: 35, 100%, 52%;
     --warning-foreground: 0 0% 9%;
     --ring: 240 3.7% 15.9%;
     --sidebar-background: 240 5.9% 10%;
@@ -33,7 +56,6 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 240 4.9% 83.9%;
-    --radius: 0.5rem;
   }
 }
 
@@ -46,65 +68,14 @@
   }
 }
 
-/* Custom button styles */
-@layer components {
-  .btn {
-    @apply relative inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ease-in-out;
-    background: linear-gradient(45deg, #8b5cf6, #06b6d4);
-    color: var(--primary-foreground);
-    border: 1px solid transparent;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-
-  .btn:hover {
-    @apply scale-105;
-    background: linear-gradient(45deg, #06b6d4, #8b5cf6);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  }
-
-  .btn:focus {
-    @apply outline-none ring-2 ring-offset-2 ring-[var(--ring)];
-  }
-
-  .btn:disabled {
-    @apply opacity-50 cursor-not-allowed;
-    background: var(--muted);
-    color: var(--muted-foreground);
-    box-shadow: none;
-  }
-
-  .btn-outline {
-    @apply bg-transparent border-[var(--border)];
-    color: var(--foreground);
-    box-shadow: none;
-  }
-
-  .btn-outline:hover {
-    @apply bg-[var(--secondary)] scale-105;
-    color: var(--secondary-foreground);
-  }
-
-  .btn-icon {
-    @apply p-2;
-  }
-
-  /* Override shadcn/ui button styles */
-  button[data-variant="default"] {
-    @apply btn !important;
-  }
-
-  button[data-variant="outline"] {
-    @apply btn btn-outline !important;
-  }
-
-  button[data-size="icon"] {
-    @apply btn btn-icon !important;
-  }
-}
-
 /* Стили для анимированного градиента */
 .animated-gradient {
-  background: linear-gradient(45deg, #8b5cf6, #06b6d4, #8b5cf6);
+  background: linear-gradient(
+    45deg,
+    #8b5cf6,
+    #06b6d4,
+    #8b5cf6
+  );
   background-size: 200% 200%;
   background-clip: text;
   -webkit-background-clip: text;
@@ -113,45 +84,64 @@
 }
 
 @keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Стили для текста с обводкой и пульсацией */
 .pulsing-text {
-  text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
+  /* Обводка через text-shadow для мягкого эффекта */
+  text-shadow: 
+    -1px -1px 0 #ffffff,
+     1px -1px 0 #ffffff,
+    -1px  1px 0 #ffffff,
+     1px  1px 0 #ffffff;
+  /* Альтернатива: -webkit-text-stroke (менее совместимо, но чётче) */
+  /* -webkit-text-stroke: 1px #ffffff; */
   animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Стили для контейнера конфигурации (без прокрутки) */
 .config-display {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.9);
   padding: 0.75rem;
   border-radius: 0.5rem;
   text-align: center;
   white-space: normal;
   word-break: break-all;
-  font-size: 0.875rem;
-  color: var(--foreground);
+  font-size: 0.875rem; /* text-sm */
+  color: black;
 }
 
 /* Стили для сгенерированной конфигурации (с прокруткой) */
 .config-generated {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.9);
   padding: 0.75rem;
   border-radius: 0.5rem;
   text-align: center;
   overflow-x: auto;
   white-space: nowrap;
-  font-size: 0.875rem;
-  color: var(--foreground);
+  font-size: 0.875rem; /* text-sm */
+  color: black;
 }
 
 /* Стили для Alert */
@@ -163,7 +153,9 @@
 }
 
 @media (min-width: 640px) {
-  .alert { max-width: 28rem; }
+  .alert {
+    max-width: 28rem; /* max-w-md */
+  }
 }
 
 /* Стили для модального окна конфигурации */
@@ -176,7 +168,9 @@
 }
 
 @media (min-width: 768px) {
-  .config-dialog { max-width: 700px; }
+  .config-dialog {
+    max-width: 700px;
+  }
 }
 
 /* Стили для заголовков и описаний в модальных окнах */
@@ -186,7 +180,9 @@
 
 /* Стили для VLESS-генератора */
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Стили для фона в стиле Матрица */
@@ -267,27 +263,27 @@
 
 /* Стили для футера с донатами */
 .footer {
-  margin-top: 1.5rem;
-  opacity: 0.7;
+  margin-top: 1.5rem; /* mt-6 */
+  opacity: 0.7; /* Слегка уменьшенная заметность */
 }
 
 .footer-text {
-  font-size: 0.75rem;
-  color: #ffffff;
-  margin-bottom: 0.25rem;
+  font-size: 0.75rem; /* text-xs */
+  color: #ffffff; /* Белый текст для читаемости на тёмном фоне */
+  margin-bottom: 0.25rem; /* mb-1 */
 }
 
 .footer-link {
-  font-size: 0.75rem;
-  color: #a1a1aa;
+  font-size: 0.75rem; /* text-xs */
+  color: #a1a1aa; /* Приглушённый серый цвет для ссылок */
   text-decoration: underline;
 }
 
 .footer-link:hover {
-  color: #ffffff;
+  color: #ffffff; /* Белый при наведении */
 }
 
 .footer-divider {
-  font-size: 0.75rem;
-  color: #a1a1aa;
+  font-size: 0.75rem; /* text-xs */
+  color: #a1a1aa; /* Такой же серый, как у ссылок */
 }

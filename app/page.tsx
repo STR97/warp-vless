@@ -3,14 +3,6 @@
 import { useEffect } from "react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
 import { WarpGenerator } from "@/components/warp-generator"
 import { VlessGenerator } from "@/components/vless-generator"
 
@@ -34,7 +26,7 @@ export default function Home() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      ctx.fillStyle = "rgba(255, 255, 255, 0.3)"
+      ctx.fillStyle = "rgba(255, 255, 255, 0.2)"
       ctx.font = `${fontSize}px monospace`
 
       for (let i = 0; i < drops.length; i++) {
@@ -70,9 +62,9 @@ export default function Home() {
       {/* Основной контент */}
       <div className="relative z-10 flex flex-col items-center justify-center w-full">
         <Alert className="alert mb-6 break-words" style={{ display: "none" }}>
-          <AlertTitle>Telegram-бот для генерации конфигураций WARP</AlertTitle>
+          <AlertTitle>Telegram Bot для генерации конфигов WARP</AlertTitle>
           <AlertDescription className="break-words">
-            Для генерации конфигураций в случае недоступности сайта используйте:{" "}
+            Создал бота для генерации конфигов, если сайт вдруг перестанет работать:{" "}
             <a href="https://t.me/warp_generator_bot" className="font-medium">
               Warp Generator Bot
             </a>
@@ -83,77 +75,12 @@ export default function Home() {
             STR BYPASS
           </h1>
           <h2 className="text-2xl font-semibold animated-gradient">
-            WARP Генератор
+            WARP ГЕНЕРАТОР
           </h2>
           <WarpGenerator />
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="outline" className="w-full">
-                Инструкции по WARP
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="config-dialog sm:max-w-[425px]">
-              <DialogHeader className="dialog-header">
-                <DialogTitle>Инструкция по настройке WARP</DialogTitle>
-                <DialogDescription>
-                  Настройте VPN с помощью конфигурации WARP, следуя этим шагам.
-                </DialogDescription>
-              </DialogHeader>
-              <div className="space-y-4 text-left">
-                <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-2">
-                  <li>Выберите сервисы и тип устройства, затем нажмите «Сгенерировать».</li>
-                  <li>Скачайте файл конфигурации (.conf) или отсканируйте QR-код.</li>
-                  <li>Установите AmneziaWG:</li>
-                  <ul className="list-disc list-inside ml-4">
-                    <li><a href="https://github.com/amnezia-vpn/amneziawg-android/releases" target="_blank" rel="noopener noreferrer" className="underline">Android</a></li>
-                    <li><a href="https://github.com/amnezia-vpn/amneziawg-windows-client/releases" target="_blank" rel="noopener noreferrer" className="underline">Windows</a></li>
-                  </ul>
-                  <li>В AmneziaWG выберите «Добавить туннель», импортируйте файл .conf или отсканируйте QR-код.</li>
-                  <li>Нажмите «Подключить» для активации VPN.</li>
-                </ol>
-                <p className="text-sm text-muted-foreground">
-                  Для помощи обратитесь в <a href="https://t.me/STR_BYPASS" className="underline">Telegram-канал</a>.
-                </p>
-              </div>
-            </DialogContent>
-          </Dialog>
-          <h2 className="text-2xl font-semibold animated-gradient">
-            VLESS Генератор
-          </h2>
           <VlessGenerator />
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="outline" className="w-full">
-                Инструкции по VLESS
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="config-dialog sm:max-w-[425px]">
-              <DialogHeader className="dialog-header">
-                <DialogTitle>Инструкция по настройке VLESS</DialogTitle>
-                <DialogDescription>
-                  Настройте VPN с помощью конфигурации VLESS, следуя этим шагам.
-                </DialogDescription>
-              </DialogHeader>
-              <div className="space-y-4 text-left">
-                <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-2">
-                  <li>Выберите источник и нажмите «Сгенерировать».</li>
-                  <li>Скопируйте конфигурацию или отсканируйте QR-код.</li>
-                  <li>Установите v2rayNG (Android) или v2rayN (Windows):</li>
-                  <ul className="list-disc list-inside ml-4">
-                    <li><a href="https://github.com/2dust/v2rayNG/releases" target="_blank" rel="noopener noreferrer" className="underline">Android</a></li>
-                    <li><a href="https://github.com/2dust/v2rayN/releases" target="_blank" rel="noopener noreferrer" className="underline">Windows</a></li>
-                  </ul>
-                  <li>В v2rayNG/v2rayN нажмите «+» или «Импорт из буфера», вставьте конфигурацию или отсканируйте QR-код.</li>
-                  <li>Выберите конфигурацию и нажмите «Подключить».</li>
-                </ol>
-                <p className="text-sm text-muted-foreground">
-                  Для подписки посетите <a href="https://st-vless.vercel.app/" className="underline">сайт</a>.
-                </p>
-              </div>
-            </DialogContent>
-          </Dialog>
           <Button asChild className="w-full">
-            <a href="https://t.me/STR_BYPASS">Telegram-канал</a>
+            <a href="https://t.me/STR_BYPASS">Telegram канал</a>
           </Button>
         </div>
         <footer className="footer mt-6">
