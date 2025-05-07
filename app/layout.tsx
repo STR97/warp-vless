@@ -1,13 +1,13 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { ThemeProviderWithYM } from "@/components/ThemeProviderWithYM"
+import ThemeProviderWithYM from "@/components/ThemeProviderWithYM"
 import type React from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Генерация конфигурации WARP",
+  title: "Генерация конфигурации WARP и VLESS",
   description: "Генератор конфигураций для WARP и VLESS"
 }
 
