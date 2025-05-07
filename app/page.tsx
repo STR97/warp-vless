@@ -88,7 +88,7 @@ export default function Home() {
           <WarpGenerator />
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="outline" className="w-full">
+              <Button variant="default" className="w-full">
                 Инструкции по WARP
               </Button>
             </DialogTrigger>
@@ -117,13 +117,10 @@ export default function Home() {
               </div>
             </DialogContent>
           </Dialog>
-          <h2 className="text-2xl font-semibold text-foreground">
-            VLESS Конфигурация
-          </h2>
           <VlessGenerator />
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="outline" className="w-full">
+              <Button variant="default" className="w-full">
                 Инструкции по VLESS
               </Button>
             </DialogTrigger>
@@ -152,7 +149,7 @@ export default function Home() {
               </div>
             </DialogContent>
           </Dialog>
-          <Button asChild className="w-full">
+          <Button asChild variant="default" className="w-full">
             <a href="https://t.me/STR_BYPASS">Telegram-канал</a>
           </Button>
         </div>
