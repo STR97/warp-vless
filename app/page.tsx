@@ -24,10 +24,10 @@ export default function Home() {
     const drops: number[] = Array(Math.floor(columns)).fill(1)
 
     function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 1)" // Remove haze by using solid black
+      ctx.fillStyle = "rgba(0, 0, 0, 1)" // Solid black background, no haze
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      ctx.fillStyle = "rgba(255, 255, 255, 0.2)"
+      ctx.fillStyle = "rgba(255, 255, 255, 0.2)" // White code
       ctx.font = `${fontSize}px monospace`
 
       for (let i = 0; i < drops.length; i++) {
@@ -78,9 +78,6 @@ export default function Home() {
           </h2>
           <WarpGenerator />
           <InstructionsDialog type="warp" />
-          <h2 className="text-2xl font-semibold animated-gradient text-white">
-            VLESS ГЕНЕРАТОР
-          </h2>
           <VlessGenerator />
           <InstructionsDialog type="vless" />
           <Button asChild className="w-full">
