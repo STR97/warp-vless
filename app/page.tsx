@@ -5,7 +5,6 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import { WarpGenerator } from "@/components/warp-generator"
 import { VlessGenerator } from "@/components/vless-generator"
-import { InstructionsDialog } from "@/components/instructions"
 
 export default function Home() {
   useEffect(() => {
@@ -77,9 +76,7 @@ export default function Home() {
             WARP ГЕНЕРАТОР
           </h2>
           <WarpGenerator />
-          <InstructionsDialog type="warp" buttonText="Инструкция" />
           <VlessGenerator />
-          <InstructionsDialog type="vless" buttonText="Инструкция" />
           <Button asChild className="w-full">
             <a href="https://t.me/STR_BYPASS">Telegram канал</a>
           </Button>
