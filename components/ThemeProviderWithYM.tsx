@@ -10,7 +10,7 @@ export default function ThemeProviderWithYM({ children }: { children: React.Reac
   }, [])
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
       {children}
     </ThemeProvider>
   )
