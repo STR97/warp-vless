@@ -118,7 +118,7 @@ export function VlessGenerator() {
   return (
     <Card className="w-full max-w-[800px] mt-6 border border-opacity-30">
       <CardHeader>
-        <CardTitle className="text-2xl font-semibold animated-gradient">
+        <CardTitle className="text-2xl font-semibold text-white">
           VLESS Конфигурация
         </CardTitle>
       </CardHeader>
