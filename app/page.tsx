@@ -70,7 +70,7 @@ export default function Home() {
       {/* Основной контент */}
       <div className="relative z-10 flex flex-col items-center justify-center w-full">
         <Alert className="alert mb-6 break-words" style={{ display: "none" }}>
-          <AlertTitle>Telegram Bot для генерации конфигураций WARP</AlertTitle>
+          <AlertTitle>Telegram-бот для генерации конфигураций WARP</AlertTitle>
           <AlertDescription className="break-words">
             Для генерации конфигураций в случае недоступности сайта используйте:{" "}
             <a href="https://t.me/warp_generator_bot" className="font-medium">
@@ -94,25 +94,25 @@ export default function Home() {
             </DialogTrigger>
             <DialogContent className="config-dialog sm:max-w-[425px]">
               <DialogHeader className="dialog-header">
-                <DialogTitle>Инструкции по использованию WARP</DialogTitle>
+                <DialogTitle>Инструкция по настройке WARP</DialogTitle>
                 <DialogDescription>
-                  Следуйте этим шагам для настройки VPN с использованием конфигурации WARP.
+                  Настройте VPN с помощью конфигурации WARP, следуя этим шагам.
                 </DialogDescription>
               </DialogHeader>
               <div className="space-y-4 text-left">
                 <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-2">
-                  <li>Выберите нужные сервисы и тип устройства, затем нажмите "Сгенерировать".</li>
+                  <li>Выберите сервисы и тип устройства, затем нажмите «Сгенерировать».</li>
                   <li>Скачайте файл конфигурации (.conf) или отсканируйте QR-код.</li>
-                  <li>Установите VPN-клиент AmneziaWG:</li>
+                  <li>Установите AmneziaWG:</li>
                   <ul className="list-disc list-inside ml-4">
-                    <li><a href="https://github.com/amnezia-vpn/amneziawg-android/releases" target="_blank" rel="noopener noreferrer" className="underline">AmneziaWG для Android</a></li>
-                    <li><a href="https://github.com Windows" target="_blank" rel="noopener noreferrer" className="underline">AmneziaWG для Windows</a></li>
+                    <li><a href="https://github.com/amnezia-vpn/amneziawg-android/releases" target="_blank" rel="noopener noreferrer" className="underline">Android</a></li>
+                    <li><a href="https://github.com/amnezia-vpn/amneziawg-windows-client/releases" target="_blank" rel="noopener noreferrer" className="underline">Windows</a></li>
                   </ul>
-                  <li>В AmneziaWG выберите "Добавить туннель", импортируйте файл .conf или отсканируйте QR-код.</li>
-                  <li>Нажмите "Подключить" для активации VPN.</li>
+                  <li>В AmneziaWG выберите «Добавить туннель», импортируйте файл .conf или отсканируйте QR-код.</li>
+                  <li>Нажмите «Подключить» для активации VPN.</li>
                 </ol>
                 <p className="text-sm text-muted-foreground">
-                  Для поддержки обратитесь в <a href="https://t.me/STR_BYPASS" className="underline">Telegram-канал</a>.
+                  Для помощи обратитесь в <a href="https://t.me/STR_BYPASS" className="underline">Telegram-канал</a>.
                 </p>
               </div>
             </DialogContent>
@@ -129,25 +129,25 @@ export default function Home() {
             </DialogTrigger>
             <DialogContent className="config-dialog sm:max-w-[425px]">
               <DialogHeader className="dialog-header">
-                <DialogTitle>Инструкции по использованию VLESS</DialogTitle>
+                <DialogTitle>Инструкция по настройке VLESS</DialogTitle>
                 <DialogDescription>
-                  Следуйте этим шагам для настройки VPN с использованием конфигурации VLESS.
+                  Настройте VPN с помощью конфигурации VLESS, следуя этим шагам.
                 </DialogDescription>
               </DialogHeader>
               <div className="space-y-4 text-left">
                 <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-2">
-                  <li>Выберите источник конфигурации и нажмите "Сгенерировать".</li>
+                  <li>Выберите источник и нажмите «Сгенерировать».</li>
                   <li>Скопируйте конфигурацию или отсканируйте QR-код.</li>
-                  <li>Установите VPN-клиент v2rayNG (Android) или v2rayN (Windows):</li>
+                  <li>Установите v2rayNG (Android) или v2rayN (Windows):</li>
                   <ul className="list-disc list-inside ml-4">
-                    <li><a href="https://github.com/2dust/v2rayNG/releases" target="_blank" rel="noopener noreferrer" className="underline">v2rayNG для Android</a></li>
-                    <li><a href="https://github.com/2dust/v2rayN/releases" target="_blank" rel="noopener noreferrer" className="underline">v2rayN для Windows</a></li>
+                    <li><a href="https://github.com/2dust/v2rayNG/releases" target="_blank" rel="noopener noreferrer" className="underline">Android</a></li>
+                    <li><a href="https://github.com/2dust/v2rayN/releases" target="_blank" rel="noopener noreferrer" className="underline">Windows</a></li>
                   </ul>
-                  <li>В v2rayNG/v2rayN нажмите "+" или "Импорт из буфера обмена", вставьте конфигурацию или отсканируйте QR-код.</li>
-                  <li>Выберите конфигурацию и нажмите "Подключить".</li>
+                  <li>В v2rayNG/v2rayN нажмите «+» или «Импорт из буфера», вставьте конфигурацию или отсканируйте QR-код.</li>
+                  <li>Выберите конфигурацию и нажмите «Подключить».</li>
                 </ol>
                 <p className="text-sm text-muted-foreground">
-                  Для подписки на конфигурации посетите <a href="https://st-vless.vercel.app/" className="underline">сайт подписки</a>.
+                  Для подписки посетите <a href="https://st-vless.vercel.app/" className="underline">сайт</a>.
                 </p>
               </div>
             </DialogContent>
