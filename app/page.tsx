@@ -5,6 +5,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import { WarpGenerator } from "@/components/warp-generator"
 import { VlessGenerator } from "@/components/vless-generator"
+import { InstructionsDialog } from "@/components/instructions"
 
 export default function Home() {
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function Home() {
     const drops: number[] = Array(Math.floor(columns)).fill(1)
 
     function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)"
+      ctx.fillStyle = "rgba(0, 0, 0, 1)" // Remove haze by using solid black
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       ctx.fillStyle = "rgba(255, 255, 255, 0.2)"
@@ -57,9 +58,7 @@ export default function Home() {
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center p-4 w-full text-center overflow-hidden">
-      {/* Анимированный фон в стиле Матрица */}
       <canvas id="matrix-bg" className="fixed inset-0 z-0" />
-      {/* Основной контент */}
       <div className="relative z-10 flex flex-col items-center justify-center w-full">
         <Alert className="alert mb-6 break-words" style={{ display: "none" }}>
           <AlertTitle>Telegram Bot для генерации конфигов WARP</AlertTitle>
@@ -74,11 +73,16 @@ export default function Home() {
           <h1 className="text-5xl font-bold animated-gradient pulsing-text">
             STR BYPASS
           </h1>
-          <h2 className="text-2xl font-semibold animated-gradient">
+          <h2 className="text-2xl font-semibold animated-gradient text-white">
             WARP ГЕНЕРАТОР
           </h2>
           <WarpGenerator />
+          <InstructionsDialog type="warp" />
+          <h2 className="text-2xl font-semibold animated-gradient text-white">
+            VLESS ГЕНЕРАТОР
+          </h2>
           <VlessGenerator />
+          <InstructionsDialog type="vless" />
           <Button asChild className="w-full">
             <a href="https://t.me/STR_BYPASS">Telegram канал</a>
           </Button>
