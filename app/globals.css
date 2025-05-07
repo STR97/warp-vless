@@ -42,10 +42,10 @@
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
     --accent: 240 3.7% 15.9%;
-    --accent-foreground: ;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
-    --warning: 35, 100%, 52%;
+    --warning: 35 100% 52%;
     --warning-foreground: 0 0% 9%;
     --ring: 240 3.7% 15.9%;
     --sidebar-background: 240 5.9% 10%;
@@ -70,12 +70,7 @@
 
 /* Стили для анимированного градиента */
 .animated-gradient {
-  background: linear-gradient(
-    45deg,
-    #8b5cf6,
-    #06b6d4,
-    #8b5cf6
-  );
+  background: linear-gradient(45deg, #8b5cf6, #06b6d4, #8b5cf6);
   background-size: 200% 200%;
   background-clip: text;
   -webkit-background-clip: text;
@@ -84,40 +79,21 @@
 }
 
 @keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Стили для текста с обводкой и пульсацией */
 .pulsing-text {
-  /* Обводка через text-shadow для мягкого эффекта */
-  text-shadow: 
-    -1px -1px 0 #ffffff,
-     1px -1px 0 #ffffff,
-    -1px  1px 0 #ffffff,
-     1px  1px 0 #ffffff;
-  /* Альтернатива: -webkit-text-stroke (менее совместимо, но чётче) */
-  /* -webkit-text-stroke: 1px #ffffff; */
+  text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
   animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 /* Стили для контейнера конфигурации (без прокрутки) */
@@ -128,7 +104,7 @@
   text-align: center;
   white-space: normal;
   word-break: break-all;
-  font-size: 0.875rem; /* text-sm */
+  font-size: 0.875rem;
   color: black;
 }
 
@@ -140,7 +116,7 @@
   text-align: center;
   overflow-x: auto;
   white-space: nowrap;
-  font-size: 0.875rem; /* text-sm */
+  font-size: 0.875rem;
   color: black;
 }
 
@@ -153,9 +129,7 @@
 }
 
 @media (min-width: 640px) {
-  .alert {
-    max-width: 28rem; /* max-w-md */
-  }
+  .alert { max-width: 28rem; }
 }
 
 /* Стили для модального окна конфигурации */
@@ -168,9 +142,7 @@
 }
 
 @media (min-width: 768px) {
-  .config-dialog {
-    max-width: 700px;
-  }
+  .config-dialog { max-width: 700px; }
 }
 
 /* Стили для заголовков и описаний в модальных окнах */
@@ -180,9 +152,7 @@
 
 /* Стили для VLESS-генератора */
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
 /* Стили для фона в стиле Матрица */
@@ -263,27 +233,27 @@
 
 /* Стили для футера с донатами */
 .footer {
-  margin-top: 1.5rem; /* mt-6 */
-  opacity: 0.7; /* Слегка уменьшенная заметность */
+  margin-top: 1.5rem;
+  opacity: 0.7;
 }
 
 .footer-text {
-  font-size: 0.75rem; /* text-xs */
-  color: #ffffff; /* Белый текст для читаемости на тёмном фоне */
-  margin-bottom: 0.25rem; /* mb-1 */
+  font-size: 0.75rem;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
 }
 
 .footer-link {
-  font-size: 0.75rem; /* text-xs */
-  color: #a1a1aa; /* Приглушённый серый цвет для ссылок */
+  font-size: 0.75rem;
+  color: #a1a1aa;
   text-decoration: underline;
 }
 
 .footer-link:hover {
-  color: #ffffff; /* Белый при наведении */
+  color: #ffffff;
 }
 
 .footer-divider {
-  font-size: 0.75rem; /* text-xs */
-  color: #a1a1aa; /* Такой же серый, как у ссылок */
+  font-size: 0.75rem;
+  color: #a1a1aa;
 }
