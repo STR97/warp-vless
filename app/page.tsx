@@ -77,9 +77,9 @@ export default function Home() {
             WARP ГЕНЕРАТОР
           </h2>
           <WarpGenerator />
-          <InstructionsDialog type="warp" />
+          <InstructionsDialog type="warp" buttonText="Инструкция" />
           <VlessGenerator />
-          <InstructionsDialog type="vless" />
+          <InstructionsDialog type="vless" buttonText="Инструкция" />
           <Button asChild className="w-full">
             <a href="https://t.me/STR_BYPASS">Telegram канал</a>
           </Button>
