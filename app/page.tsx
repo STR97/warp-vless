@@ -82,7 +82,7 @@ export default function Home() {
           <h1 className="text-5xl font-bold animated-gradient pulsing-text">
             STR BYPASS
           </h1>
-          <h2 className="text-2xl font-semibold animated-gradient text-white">
+          <h2 className="text-2xl font-semibold text-foreground">
             WARP Генератор
           </h2>
           <WarpGenerator />
@@ -117,7 +117,7 @@ export default function Home() {
               </div>
             </DialogContent>
           </Dialog>
-          <h2 className="text-2xl font-semibold animated-gradient text-white">
+          <h2 className="text-2xl font-semibold text-foreground">
             VLESS Конфигурация
           </h2>
           <VlessGenerator />
