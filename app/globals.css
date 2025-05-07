@@ -3,29 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
-
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -42,10 +19,10 @@
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
     --accent: 240 3.7% 15.9%;
-    --accent-foreground: ;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
-    --warning: 35, 100%, 52%;
+    --warning: 35 100% 52%;
     --warning-foreground: 0 0% 9%;
     --ring: 240 3.7% 15.9%;
     --sidebar-background: 240 5.9% 10%;
@@ -56,6 +33,7 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 240 4.9% 83.9%;
+    --radius: 0.5rem;
   }
 }
 
@@ -72,16 +50,16 @@
 @layer components {
   .btn {
     @apply relative inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ease-in-out;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    background: linear-gradient(45deg, #8b5cf6, #06b6d4);
     color: var(--primary-foreground);
     border: 1px solid transparent;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
   .btn:hover {
     @apply scale-105;
-    background: linear-gradient(45deg, var(--secondary), var(--primary));
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(45deg, #06b6d4, #8b5cf6);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   }
 
   .btn:focus {
@@ -92,11 +70,13 @@
     @apply opacity-50 cursor-not-allowed;
     background: var(--muted);
     color: var(--muted-foreground);
+    box-shadow: none;
   }
 
   .btn-outline {
     @apply bg-transparent border-[var(--border)];
     color: var(--foreground);
+    box-shadow: none;
   }
 
   .btn-outline:hover {
@@ -109,16 +89,16 @@
   }
 
   /* Override shadcn/ui button styles */
-  button[class*="variant-default"] {
-    @apply btn;
+  [data-variant="default"] {
+    @apply btn !important;
   }
 
-  button[class*="variant-outline"] {
-    @apply btn btn-outline;
+  [data-variant="outline"] {
+    @apply btn btn-outline !important;
   }
 
-  button[class*="size-icon"] {
-    @apply btn btn-icon;
+  [data-size="icon"] {
+    @apply btn btn-icon !important;
   }
 }
 
@@ -152,26 +132,26 @@
 
 /* Стили для контейнера конфигурации (без прокрутки) */
 .config-display {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
   padding: 0.75rem;
   border-radius: 0.5rem;
   text-align: center;
   white-space: normal;
   word-break: break-all;
   font-size: 0.875rem;
-  color: black;
+  color: var(--foreground);
 }
 
 /* Стили для сгенерированной конфигурации (с прокруткой) */
 .config-generated {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
   padding: 0.75rem;
   border-radius: 0.5rem;
   text-align: center;
   overflow-x: auto;
   white-space: nowrap;
   font-size: 0.875rem;
-  color: black;
+  color: var(--foreground);
 }
 
 /* Стили для Alert */
