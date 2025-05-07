@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ru">
+    <html lang="ru" className="dark">
       <head>
         <link rel="icon" href="/cloud.ico" type="image/x-icon" />
         <Script id="yandex-metrika">
