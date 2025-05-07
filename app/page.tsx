@@ -27,7 +27,7 @@ export default function Home() {
       ctx.fillStyle = "rgba(0, 0, 0, 1)" // Solid black background, no haze
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      ctx.fillStyle = "rgba(255, 255, 255, 0.2)" // White code
+      ctx.fillStyle = "rgba(255, 255, 255, 0.2)" // White code with fading trails
       ctx.font = `${fontSize}px monospace`
 
       for (let i = 0; i < drops.length; i++) {
