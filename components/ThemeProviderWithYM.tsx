@@ -1,6 +1,6 @@
 "use client"
 
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "next-themes"
 import { useEffect } from "react"
 import { initYM } from "@/utils/ym"
 
