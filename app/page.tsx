@@ -13,11 +13,8 @@ import {
 } from "@/components/ui/dialog"
 import { WarpGenerator } from "@/components/warp-generator"
 import { VlessGenerator } from "@/components/vless-generator"
-import { useTheme } from "next-themes"
 
 export default function Home() {
-  const { theme } = useTheme()
-
   useEffect(() => {
     const canvas = document.getElementById("matrix-bg") as HTMLCanvasElement
     if (!canvas) return
@@ -34,10 +31,10 @@ export default function Home() {
     const drops: number[] = Array(Math.floor(columns)).fill(1)
 
     function draw() {
-      ctx.fillStyle = theme === "light" ? "rgba(255, 255, 255, 0.05)" : "rgba(0, 0, 0, 0.05)"
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      ctx.fillStyle = theme === "light" ? "rgba(0, 0, 0, 0.3)" : "rgba(255, 255, 255, 0.3)"
+      ctx.fillStyle = "rgba(255, 255, 255, 0.3)"
       ctx.font = `${fontSize}px monospace`
 
       for (let i = 0; i < drops.length; i++) {
@@ -64,7 +61,7 @@ export default function Home() {
       clearInterval(interval)
       window.removeEventListener("resize", handleResize)
     }
-  }, [theme])
+  }, [])
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center p-4 w-full text-center overflow-hidden">
@@ -85,7 +82,7 @@ export default function Home() {
           <h1 className="text-5xl font-bold animated-gradient pulsing-text">
             STR BYPASS
           </h1>
-          <h2 className="text-2xl font-semibold animated-gradient">
+          <h2 className="text-2xl font-semibold animated-gradient text-white">
             WARP Генератор
           </h2>
           <WarpGenerator />
@@ -120,8 +117,8 @@ export default function Home() {
               </div>
             </DialogContent>
           </Dialog>
-          <h2 className="text-2xl font-semibold animated-gradient">
-            VLESS Генератор
+          <h2 className="text-2xl font-semibold animated-gradient text-white">
+            VLESS Конфигурация
           </h2>
           <VlessGenerator />
           <Dialog>
