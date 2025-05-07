@@ -18,8 +18,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Settings } from "lucide-react"
+import { Settings, Info } from "lucide-react"
 import Image from "next/image"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+import { InstructionsDialog } from "@/components/instructions"
 
 export function VlessGenerator() {
   const [configs, setConfigs] = useState<string[]>([])
@@ -151,6 +158,25 @@ export function VlessGenerator() {
               </Select>
             </DialogContent>
           </Dialog>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="ghost" size="icon">
+                      <Info className="h-4 w-4" />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="config-dialog sm:max-w-[425px] md:max-w-[700px]">
+                    <InstructionsDialog type="vless" />
+                  </DialogContent>
+                </Dialog>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Инструкция</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
         <Button asChild className="w-full">
           <a href="https://st-vless.vercel.app/" target="_blank" rel="noopener noreferrer">
