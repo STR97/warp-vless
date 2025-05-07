@@ -78,7 +78,50 @@ export default function Home() {
             WARP ГЕНЕРАТОР
           </h2>
           <WarpGenerator />
+          <div className="w-full text-left space-y-4">
+            <h3 className="text-lg font-semibold">Как использовать WARP конфигурацию</h3>
+            <p className="text-sm text-muted-foreground">
+              Для использования сгенерированной WARP конфигурации установите приложение AmneziaWG и следуйте этим шагам:
+            </p>
+            <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-2">
+              <li>Нажмите "Сгенерировать" и выберите настройки (сервисы, тип устройства).</li>
+              <li>Скачайте файл конфигурации (.conf) или отсканируйте QR-код.</li>
+              <li>Скачайте и установите AmneziaWG:</li>
+              <ul className="list-disc list-inside ml-4">
+                <li><a href="https://github.com/amnezia-vpn/amneziawg-android/releases" target="_blank" rel="noopener noreferrer" className="underline">AmneziaWG для Android</a></li>
+                <li><a href="https://github.com/amnezia-vpn/amneziawg-windows-client/releases" target="_blank" rel="noopener noreferrer" className="underline">AmneziaWG для Windows</a></li>
+              </ul>
+              <li>Откройте AmneziaWG, нажмите "Добавить туннель" и выберите скачанный файл конфигурации или отсканируйте QR-код.</li>
+              <li>Нажмите "Подключить" для активации VPN.</li>
+            </ol>
+            <p className="text-sm text-muted-foreground">
+              Если возникают проблемы, обратитесь в <a href="https://t.me/STR_BYPASS" className="underline">Telegram канал</a> за помощью.
+            </p>
+          </div>
+          <h2 className="text-2xl font-semibold animated-gradient">
+            VLESS ГЕНЕРАТОР
+          </h2>
           <VlessGenerator />
+          <div className="w-full text-left space-y-4">
+            <h3 className="text-lg font-semibold">Как использовать VLESS конфигурацию</h3>
+            <p className="text-sm text-muted-foreground">
+              Для использования сгенерированной VLESS конфигурации установите приложение v2rayNG (Android) или v2rayN (Windows) и следуйте этим шагам:
+            </p>
+            <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-2">
+              <li>Нажмите "Сгенерировать" и выберите источник конфигурации.</li>
+              <li>Скопируйте конфигурацию или отсканируйте QR-код.</li>
+              <li>Скачайте и установите приложение:</li>
+              <ul className="list-disc list-inside ml-4">
+                <li><a href="https://github.com/2dust/v2rayNG/releases" target="_blank" rel="noopener noreferrer" className="underline">v2rayNG для Android</a></li>
+                <li><a href="https://github.com/2dust/v2rayN/releases" target="_blank" rel="noopener noreferrer" className="underline">v2rayN для Windows</a></li>
+              </ul>
+              <li>Откройте v2rayNG/v2rayN, нажмите "+" или "Import Config from Clipboard" и вставьте скопированную конфигурацию, либо отсканируйте QR-код.</li>
+              <li>Выберите конфигурацию и нажмите "Connect" для активации VPN.</li>
+            </ol>
+            <p className="text-sm text-muted-foreground">
+              Для получения подписки на конфигурации посетите <a href="https://st-vless.vercel.app/" className="underline">сайт подписки</a>.
+            </p>
+          </div>
           <Button asChild className="w-full">
             <a href="https://t.me/STR_BYPASS">Telegram канал</a>
           </Button>
