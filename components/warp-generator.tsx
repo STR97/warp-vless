@@ -3,75 +3,155 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog"
-import { Label } from "@/components/ui/label"
-import { generateWarpConfig } from "@/utils/warp"
+import { Settings, RefreshCw, X } from "lucide-react"
+import Image from "next/image"
+import { ym } from "@/utils/ym"
+import { ConfigOptions } from "./config-options"
+import { Badge } from "@/components/ui/badge"
 
 export function WarpGenerator() {
-  const [services, setServices] = useState("")
-  const [deviceType, setDeviceType] = useState("")
-  const [config, setConfig] = useState("")
-  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [status, setStatus] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+  const [configData, setConfigData] = useState<{ configBase64: string; qrCodeBase64: string } | null>(null)
+  const [selectedServices, setSelectedServices] = useState<string[]>([])
+  const [siteMode, setSiteMode] = useState<"all" | "specific">("all")
+  const [deviceType, setDeviceType] = useState<"computer" | "phone">("computer")
+  const [isGenerated, setIsGenerated] = useState(false)
+  const [isConfigOpen, setIsConfigOpen] = useState(false)
 
-  const handleGenerate = async () => {
-    if (!services || !deviceType) return
-    const generatedConfig = await generateWarpConfig(services, deviceType)
-    setConfig(generatedConfig)
-    setIsDialogOpen(true)
+  const generateConfig = async () => {
+    setIsLoading(true)
+    setStatus("")
+    try {
+      const response = await fetch("/api/warp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          selectedServices: siteMode === "specific" && selectedServices.length === 0 ? ["all"] : selectedServices,
+          siteMode: siteMode === "specific" && selectedServices.length === 0 ? "all" : siteMode,
+          deviceType,
+        }),
+      })
+      const data = await response.json()
+
+      if (data.success) {
+        setConfigData(data.content)
+        setStatus("")
+        setIsGenerated(true)
+        ym(98811523, "reachGoal", "WARP_GEN")
+      } else {
+        setStatus("Ошибка: " + data.message)
+      }
+    } catch (error) {
+      setStatus("Произошла ошибка при генерации.")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const downloadConfig = () => {
+    if (configData) {
+      const link = document.createElement("a")
+      link.href = "data:application/octet-stream;base64," + configData.configBase64
+      link.download = `WARP${Math.floor(Math.random() * (9999999 - 1000000 + 1)) + 1000000}.conf`
+      link.click()
+      ym(98811523, "reachGoal", "WARP_DOWNLOAD")
+    }
+  }
+
+  const handleReset = () => {
+    setConfigData(null)
+    setIsGenerated(false)
+  }
+
+  const handleApply = () => {
+    setIsConfigOpen(false) // Закрываем диалоговое окно при нажатии "Применить"
   }
 
   return (
-    <div className="flex flex-col gap-4 w-full">
-      <div className="flex flex-col gap-2">
-        <Label htmlFor="services">Сервисы</Label>
-        <Select onValueChange={setServices} value={services}>
-          <SelectTrigger id="services">
-            <SelectValue placeholder="Выберите сервисы" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="service1">Сервис 1</SelectItem>
-            <SelectItem value="service2">Сервис 2</SelectItem>
-          </SelectContent>
-        </Select>
+    <div className="w-full space-y-4">
+      <div className="flex items-center gap-2">
+        <Button onClick={generateConfig} disabled={isLoading || isGenerated} className="flex-grow">
+          {isLoading ? "Генерация..." : "Сгенерировать"}
+        </Button>
+
+        {!isGenerated ? (
+          <div className="relative">
+            {siteMode === "specific" && (
+              <Badge
+                variant="secondary"
+                className="absolute -top-2 -right-2 bg-white text-black rounded-full w-5 h-5 flex items-center justify-center text-xs"
+              >
+                {selectedServices.length}
+              </Badge>
+            )}
+            <Dialog open={isConfigOpen} onOpenChange={setIsConfigOpen}>
+              <DialogTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Settings className="h-4 w-4" />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="config-dialog sm:max-w-[425px] md:max-w-[700px]">
+                <DialogHeader className="dialog-header">
+                  <DialogTitle>Настройка конфигурации</DialogTitle>
+                  <DialogDescription>Выберите параметры для вашей конфигурации WARP.</DialogDescription>
+                </DialogHeader>
+                <ConfigOptions
+                  selectedServices={selectedServices}
+                  onServiceToggle={(service) =>
+                    setSelectedServices((prev) =>
+                      prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service]
+                    )
+                  }
+                  siteMode={siteMode}
+                  onSiteModeChange={setSiteMode}
+                  deviceType={deviceType}
+                  onDeviceTypeChange={setDeviceType}
+                  onApply={handleApply} // Передаём обработчик для кнопки "Применить"
+                />
+              </DialogContent>
+            </Dialog>
+          </div>
+        ) : (
+          <Button onClick={handleReset} variant="outline" size="icon">
+            <RefreshCw className="h-4 w-4" />
+          </Button>
+        )}
       </div>
-      <div className="flex flex-col gap-2">
-        <Label htmlFor="deviceType">Тип устройства</Label>
-        <Select onValueChange={setDeviceType} value={deviceType}>
-          <SelectTrigger id="deviceType">
-            <SelectValue placeholder="Выберите тип устройства" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="android">Android</SelectItem>
-            <SelectItem value="windows">Windows</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-      <Button onClick={handleGenerate} disabled={!services || !deviceType} variant="default">
-        Сгенерировать
-      </Button>
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="config-dialog sm:max-w-[425px]">
-          <DialogHeader className="dialog-header">
-            <DialogTitle>Сгенерированная WARP конфигурация</DialogTitle>
-            <DialogDescription>
-              Сохраните файл конфигурации или отсканируйте QR-код.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="config-generated">{config}</div>
-        </DialogContent>
-      </Dialog>
+
+      {status && <p className="text-sm text-muted-foreground">{status}</p>}
+      {configData && isGenerated && (
+        <div className="flex gap-2">
+          <Button onClick={downloadConfig} className="flex-[0.7]">
+            Скачать конфиг
+          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" className="flex-[0.3]">
+                QR код
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="config-dialog sm:max-w-[425px]">
+              <DialogHeader className="dialog-header">
+                <DialogTitle>QR код конфигурации</DialogTitle>
+                <DialogDescription>Отсканируйте этот QR код для импорта конфигурации</DialogDescription>
+              </DialogHeader>
+              <div className="flex items-center justify-center">
+                <Image src={configData.qrCodeBase64 || "/placeholder.svg"} alt="QR Code" width={425} height={425} />
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
+      )}
     </div>
   )
 }

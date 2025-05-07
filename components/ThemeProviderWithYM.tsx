@@ -1,6 +1,6 @@
 "use client"
 
-import { ThemeProvider } from "next-themes"
+import { ThemeProvider } from "@/components/theme-provider"
 import { useEffect } from "react"
 import { initYM } from "@/utils/ym"
 
@@ -10,7 +10,7 @@ export default function ThemeProviderWithYM({ children }: { children: React.Reac
   }, [])
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
       {children}
     </ThemeProvider>
   )
