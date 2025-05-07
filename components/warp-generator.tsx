@@ -74,7 +74,7 @@ export function WarpGenerator() {
   }
 
   const handleApply = () => {
-    setIsConfigOpen(false) // Закрываем диалоговое окно при нажатии "Применить"
+    setIsConfigOpen(false)
   }
 
   return (
@@ -116,7 +116,7 @@ export function WarpGenerator() {
                   onSiteModeChange={setSiteMode}
                   deviceType={deviceType}
                   onDeviceTypeChange={setDeviceType}
-                  onApply={handleApply} // Передаём обработчик для кнопки "Применить"
+                  onApply={handleApply}
                 />
               </DialogContent>
             </Dialog>
