@@ -89,15 +89,15 @@
   }
 
   /* Override shadcn/ui button styles */
-  [data-variant="default"] {
+  button[data-variant="default"] {
     @apply btn !important;
   }
 
-  [data-variant="outline"] {
+  button[data-variant="outline"] {
     @apply btn btn-outline !important;
   }
 
-  [data-size="icon"] {
+  button[data-size="icon"] {
     @apply btn btn-icon !important;
   }
 }
