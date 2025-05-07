@@ -10,11 +10,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Settings, RefreshCw, X } from "lucide-react"
+import { Settings, RefreshCw, Info } from "lucide-react"
 import Image from "next/image"
 import { ym } from "@/utils/ym"
 import { ConfigOptions } from "./config-options"
 import { Badge } from "@/components/ui/badge"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+import { InstructionsDialog } from "@/components/instructions"
 
 export function WarpGenerator() {
   const [status, setStatus] = useState("")
@@ -126,6 +133,25 @@ export function WarpGenerator() {
             <RefreshCw className="h-4 w-4" />
           </Button>
         )}
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                    <Info className="h-4 w-4" />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="config-dialog sm:max-w-[425px] md:max-w-[700px]">
+                  <InstructionsDialog type="warp" />
+                </DialogContent>
+              </Dialog>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Инструкция</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
 
       {status && <p className="text-sm text-muted-foreground">{status}</p>}
