@@ -13,15 +13,16 @@ import { Info } from "lucide-react"
 
 interface InstructionsDialogProps {
   type: "warp" | "vless"
+  buttonText?: string
 }
 
-export function InstructionsDialog({ type }: InstructionsDialogProps) {
+export function InstructionsDialog({ type, buttonText = "Инструкция" }: InstructionsDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="outline" className="w-full">
           <Info className="h-4 w-4 mr-2" />
-          Инструкции
+          {buttonText}
         </Button>
       </DialogTrigger>
       <DialogContent className="config-dialog sm:max-w-[425px] md:max-w-[700px]">
@@ -121,7 +122,7 @@ export function InstructionsDialog({ type }: InstructionsDialogProps) {
                 <li>Установите v2rayNG или v2rayN по ссылке выше.</li>
                 <li>Откройте приложение и импортируйте конфигурацию:
                   <ul className="list-disc pl-5">
-                    <li>Для строки: вставьте vless:// строку в поле импорта (обычно "Import URL" или "Add Config").</li>
+                    <li>Для строки: вставьте vless:// строку в поле импорта (обычно "Import URL" или "Add Config") или выберите "Импорт из буфера обмена" после копирования строки.</li>
                     <li>Для QR-кода: используйте функцию сканирования QR-кода в приложении.</li>
                   </ul>
                 </li>
